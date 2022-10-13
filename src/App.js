@@ -1,15 +1,10 @@
-import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
-import { ChakraProvider } from "@chakra-ui/react";
-import { useState } from "react";
-import useMovies from "./hooks/useMovies";
+import MovieList from "./components/MovieList.js";
 
 function App() {
-  const { newMovieData, isLoading } = useMovies();
-  console.log(newMovieData, "data");
   return (
     <>
-      <div>elare file</div>
+      <MovieList />
     </>
   );
 }

@@ -6,13 +6,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ReactQueryDevtools } from "react-query/devtools";
+import MainLayout from "./components/layouts/MainLayout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={new QueryClient()}>
       <ChakraProvider>
-        <App />
+        <MainLayout>
+          <App />
+        </MainLayout>
       </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

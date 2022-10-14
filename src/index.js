@@ -7,15 +7,15 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import MainLayout from "./components/layouts/MainLayout";
+import { useState } from "react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={new QueryClient()}>
       <ChakraProvider>
-        <MainLayout>
-          <App />
-        </MainLayout>
+        <App />
       </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

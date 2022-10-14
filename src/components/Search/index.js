@@ -17,8 +17,11 @@ const Search = () => {
         </InputLeftElement>
         <Input
           background="grey !important"
+          _focus={{ background: "white !important" }}
           placeholder="Search"
           variant={"ghost"}
+          color="black !important"
+          _placeholder={{ color: "black" }}
         />
         <InputRightElement>
           <CloseIcon />

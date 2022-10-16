@@ -1,13 +1,15 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { getNewMovies } from "../services/movie";
 
 export default function useMovies() {
-  const queryKey = ["movies"];
+  const [page, setPage] = useState(1);
+  const queryKey = ["movies", page];
 
   const { data: newMovieData, isLoading } = useQuery(
     queryKey,
     async () => {
-      const movieResponse = await getNewMovies();
+      const movieResponse = await getNewMovies(page);
       return movieResponse.data;
     },
     {
@@ -15,5 +17,5 @@ export default function useMovies() {
     }
   );
 
-  return { newMovieData, isLoading };
+  return { newMovieData, isLoading, page, setPage };
 }

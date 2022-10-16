@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import Header from "../Header";
 import Container from "../Container";
+import HeaderMobile from "../HeaderMobile";
 
 const MainLayout = ({
   children,
@@ -9,15 +10,28 @@ const MainLayout = ({
   setIsMovie,
   setIsSeries,
 }) => {
+  const header = useBreakpointValue({
+    base: (
+      <HeaderMobile
+        isSeries={isSeries}
+        setIsSeries={setIsSeries}
+        isMovie={isMovie}
+        setIsMovie={setIsMovie}
+      />
+    ),
+    lg: (
+      <Header
+        isSeries={isSeries}
+        setIsSeries={setIsSeries}
+        isMovie={isMovie}
+        setIsMovie={setIsMovie}
+      />
+    ),
+  });
   return (
     <>
       <Container>
-        <Header
-          isSeries={isSeries}
-          setIsSeries={setIsSeries}
-          isMovie={isMovie}
-          setIsMovie={setIsMovie}
-        />
+        {header}
         <Box>{children}</Box>
       </Container>
     </>

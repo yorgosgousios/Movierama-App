@@ -1,20 +1,30 @@
-import { Box, Spinner, Text } from "@chakra-ui/react";
+import { Box, Spinner, Text, Button } from "@chakra-ui/react";
 import useMovies from "../../hooks/useMovies";
 
 import { Grid, GridItem } from "@chakra-ui/react";
 import MovieItem from "../MovieItem";
+import Pagination from "../Pagination";
 
 const NowPlayingList = () => {
-  const { newMovieData, isLoading } = useMovies();
+  const { newMovieData, isLoading, page, setPage, fetchNextPage } = useMovies();
   console.log(newMovieData, "data");
   const imgSrc = "https://www.themoviedb.org/t/p/w188_and_h282_bestv2/";
 
   return (
     <>
       <Box mt="2rem">
-        <Text color={"white"} fontSize="1.5rem" fontWeight={"bold"} mb="1rem">
-          In Theaters
-        </Text>
+        <Box
+          display={"flex"}
+          mb="1rem"
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Text color={"white"} fontSize="1.5rem" fontWeight={"bold"} mr="2rem">
+            In Theaters
+          </Text>
+          <Pagination page={page} setPage={setPage} />
+        </Box>
+
         <Grid
           templateColumns="repeat(4, 1fr)"
           rowGap={"5rem"}

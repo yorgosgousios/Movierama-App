@@ -3,6 +3,7 @@ import "./App.css";
 import NowPlayingList from "./components/NowPlayingList/index.js";
 import PopularSeries from "./components/PopularSeries";
 import MainLayout from "./components/layouts/MainLayout";
+import Pagination from "./components/Pagination";
 
 function App() {
   const [isSeries, setIsSeries] = useState(false);

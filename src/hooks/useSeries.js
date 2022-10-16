@@ -1,8 +1,10 @@
 import { useQuery } from "react-query";
 import { getPopularSeries } from "../services/series";
+import { useState } from "react";
 
 export default function useSeries() {
-  const queryKey = ["series"];
+  const [page, setPage] = useState(1);
+  const queryKey = ["series", page];
 
   const { data: seriesData, isLoading } = useQuery(
     queryKey,

@@ -9,29 +9,21 @@ const MainLayout = ({
   isMovie,
   setIsMovie,
   setIsSeries,
+  isSearch,
+  setIsSearch,
 }) => {
-  const header = useBreakpointValue({
-    base: (
-      <HeaderMobile
-        isSeries={isSeries}
-        setIsSeries={setIsSeries}
-        isMovie={isMovie}
-        setIsMovie={setIsMovie}
-      />
-    ),
-    lg: (
+  return (
+    <>
       <Header
         isSeries={isSeries}
         setIsSeries={setIsSeries}
         isMovie={isMovie}
         setIsMovie={setIsMovie}
+        isSearch={isSearch}
+        setIsSearch={setIsSearch}
       />
-    ),
-  });
-  return (
-    <>
+
       <Container>
-        {header}
         <Box>{children}</Box>
       </Container>
     </>

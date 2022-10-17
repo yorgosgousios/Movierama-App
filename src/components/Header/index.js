@@ -1,46 +1,69 @@
 import { Box, Text } from "@chakra-ui/react";
-import Search from "../Search";
+import Container from "../Container";
+import Search from "../SearchField";
 
-const Header = ({ isSeries, isMovie, setIsMovie, setIsSeries }) => {
+const Header = ({
+  isSeries,
+  isMovie,
+  setIsMovie,
+  setIsSeries,
+  isSearch,
+  setIsSearch,
+}) => {
   return (
     <Box
-      display={"flex"}
-      alignItems="center"
-      justifyContent={"space-between"}
-      background={"#323232"}
+      borderBottom={"1px solid #464646"}
+      position="fixed"
+      width={"100%"}
+      top={0}
+      zIndex={100}
     >
-      <Box w={"200px"} display="flex">
+      <Container>
         <Box
-          color={"white"}
-          borderBottom={isMovie ? "1px solid white" : "none"}
-          _hover={{ transition: "border 0.6s linear" }}
-          fontWeight={isMovie ? "bold" : "normal"}
-          cursor={"pointer"}
-          onClick={() => {
-            setIsMovie(true);
-            setIsSeries(false);
-          }}
-          marginRight="2rem"
+          display={"flex"}
+          alignItems="center"
+          justifyContent={"space-between"}
+          background={"#323232"}
         >
-          In Theaters
+          <Box w={"200px"} display="flex">
+            <Box
+              color={"white"}
+              borderBottom={isMovie ? "1px solid white" : "none"}
+              _hover={{ transition: "border 0.6s linear" }}
+              fontWeight={isMovie ? "bold" : "normal"}
+              cursor={"pointer"}
+              onClick={() => {
+                setIsMovie(true);
+                setIsSeries(false);
+              }}
+              marginRight="2rem"
+            >
+              In Theaters
+            </Box>
+            <Box
+              color={"white"}
+              borderBottom={isSeries ? "1px solid white" : "none"}
+              cursor={"pointer"}
+              fontWeight={isSeries ? "bold" : "normal"}
+              onClick={() => {
+                setIsSeries(true);
+                setIsMovie(false);
+              }}
+            >
+              Series
+            </Box>
+          </Box>
+          <Text height={"100%"} color={"red"} fontSize="48px">
+            MovieRama
+          </Text>
+          <Search
+            setIsMovie={setIsMovie}
+            setIsSeries={setIsSeries}
+            setIsSearch={setIsSearch}
+            isSearch={isSearch}
+          />
         </Box>
-        <Box
-          color={"white"}
-          borderBottom={isSeries ? "1px solid white" : "none"}
-          cursor={"pointer"}
-          fontWeight={isSeries ? "bold" : "normal"}
-          onClick={() => {
-            setIsSeries(true);
-            setIsMovie(false);
-          }}
-        >
-          Series
-        </Box>
-      </Box>
-      <Text height={"100%"} color={"red"} fontSize="48px">
-        MovieRama
-      </Text>
-      <Search />
+      </Container>
     </Box>
   );
 };

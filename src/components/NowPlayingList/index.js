@@ -12,7 +12,7 @@ const NowPlayingList = () => {
 
   return (
     <>
-      <Box mt="2rem">
+      <Box mt="100px">
         <Box
           display={"flex"}
           mb="1rem"
@@ -31,7 +31,7 @@ const NowPlayingList = () => {
           columnGap={"1.5rem"}
         >
           {isLoading ? (
-            <Spinner />
+            <Spinner color="white" />
           ) : (
             newMovieData?.results?.map((movie) => {
               return (
@@ -40,6 +40,7 @@ const NowPlayingList = () => {
                     title={movie?.title}
                     releaseDate={movie?.release_date}
                     img={`${imgSrc}${movie?.poster_path}`}
+                    isLoading={isLoading}
                   />
                 </GridItem>
               );

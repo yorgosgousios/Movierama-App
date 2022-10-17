@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import Search from "../Search";
+import Search from "../SearchField";
 
 const HeaderMobile = ({ isSeries, isMovie, setIsMovie, setIsSeries }) => {
   return (
